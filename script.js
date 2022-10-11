@@ -15288,14 +15288,14 @@ const dictionary = [
   "artsy",
   "rural",
   "shave",
-]
+].reverse()
 const WORD_LENGTH = 5
 const FLIP_ANIMATION_DURATION = 500
 const DANCE_ANIMATION_DURATION = 500
 const keyboard = document.querySelector("[data-keyboard]")
 const alertContainer = document.querySelector("[data-alert-container]")
 const guessGrid = document.querySelector("[data-guess-grid]")
-const offsetFromDate = new Date(2022, 0, 1)
+const offsetFromDate = new Date(2022, 9, 11)
 const msOffset = Date.now() - offsetFromDate
 const dayOffset = msOffset / 1000 / 60 / 60 / 24
 const targetWord = targetWords[Math.floor(dayOffset)]
@@ -15401,8 +15401,24 @@ function flipTile(tile, index, array, guess) {
         tile.dataset.state = "correct"
         key.classList.add("correct")
       } else if (targetWord.includes(letter)) {
-        tile.dataset.state = "wrong-location"
-        key.classList.add("wrong-location")
+
+let countLetter = (targetWord.match(new RegExp(guess[index], "g")) || []).length;
+        let correctLetters = 0
+        for(i=0;i<5;i++){
+          if(guess[i]==targetWord[i] && guess[i]==letter){
+            correctLetters++;
+          }
+        }
+        for(i=0;i<=index;i++){
+          if(guess[i]==letter&&guess[i]!=targetWord[i]){
+            correctLetters++;
+          }
+        
+        }
+        if(correctLetters>countLetter){tile.dataset.state = "wrong"
+          key.classList.add("wrong")}else{tile.dataset.state = "wrong-location"
+          key.classList.add("wrong-location")
+        }
       } else {
         tile.dataset.state = "wrong"
         key.classList.add("wrong")
