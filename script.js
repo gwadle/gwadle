@@ -15376,7 +15376,7 @@ function pressKey(key) {
   if (activeTiles.length >= WORD_LENGTH) return
   const nextTile = guessGrid.querySelector(":not([data-letter])")
   nextTile.dataset.letter = key.toLowerCase()
-  nextTile.innerHTML = emojis[key]
+  nextTile.innerHTML = emojis[key.toUpperCase()]
   nextTile.dataset.state = "active"
 }
 
