@@ -2314,7 +2314,7 @@ const targetWords = [
   "artsy",
   "rural",
   "shave",
-]
+].reverse()
 const dictionary = [
   "aahed",
   "aalii",
@@ -15288,7 +15288,7 @@ const dictionary = [
   "artsy",
   "rural",
   "shave",
-].reverse()
+]
 const WORD_LENGTH = 5
 const FLIP_ANIMATION_DURATION = 500
 const DANCE_ANIMATION_DURATION = 500
